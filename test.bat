@@ -17,10 +17,37 @@ examples\performance_test.exe
 if errorlevel 1 echo Performance test failed!
 echo.
 
-echo === Huge File Test (if available) ===
+echo === Huge File Test (Original Parser) ===
 if exist tests\huge_file_test.pgn (
     echo Found huge file, running test...
     examples\huge_file_test.exe
+) else (
+    echo No huge file found, skipping...
+)
+echo.
+
+echo === Memory-Optimized Test ===
+if exist tests\huge_file_test.pgn (
+    echo Testing memory-optimized version...
+    examples\memory_test.exe
+) else (
+    echo No huge file found, skipping...
+)
+echo.
+
+echo === Memory Tracking Test ===
+if exist tests\huge_file_test.pgn (
+    echo Testing memory tracking...
+    examples\memory_tracking_test.exe
+) else (
+    echo No huge file found, skipping...
+)
+echo.
+
+echo === Memory Comparison Test ===
+if exist tests\huge_file_test.pgn (
+    echo Running memory comparison...
+    examples\memory_comparison.exe
 ) else (
     echo No huge file found, skipping...
 )
